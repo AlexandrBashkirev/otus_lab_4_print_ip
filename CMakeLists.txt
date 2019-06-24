@@ -18,6 +18,5 @@ set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
 
 include(CPack)
 
-enable_testing()
 
 add_subdirectory(src)
