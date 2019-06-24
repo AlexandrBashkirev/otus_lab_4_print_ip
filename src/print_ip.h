@@ -20,7 +20,6 @@ namespace flaber {
 		template<class ...Args>
 		_INLINE_VAR constexpr bool is_all_same_v = is_all_same<Args...>::value;
 
-
 		template<class T>
 		void print_ip_part(std::ostream& os, T value)
 		{
