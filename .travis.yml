@@ -4,7 +4,11 @@ compiler: clang
 before_script:
 - sudo apt update
 - sudo apt install libspdlog-dev -y
-- sudo apt install libboost-test-dev -y
+- sudo apt-get install wget software-properties-common
+- sudo wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
+- sudo apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-8 main"
+- sudo apt update
+- sudo apt-get install clang-8 lldb-8 lld-8
 script:
 - cmake .
 - cmake --build .
