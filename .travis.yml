@@ -9,8 +9,10 @@ addons:
     - libc++-7-dev
     - libc++abi-7-dev
     update: true
-install:
-- pip install libboost-test-dev -y
+before_script:
+- sudo apt update
+- sudo apt install libspdlog-dev -y
+- sudo apt install libboost-test-dev -y
 script:
 - cmake .
 - cmake --build .
