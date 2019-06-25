@@ -11,6 +11,9 @@ namespace flaber {
 		template<typename T>
 		struct is_all_same<T> : std::true_type {};
 
+		template<typename T>
+		struct is_all_same<T, T> : std::true_type {};
+
 		template<typename T, typename U >
 		struct is_all_same<T, U> : std::false_type {};
 
