@@ -5,7 +5,7 @@ find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 include_directories(${Boost_INCLUDE_DIRS} ${CMAKE_SOURCE_DIR}/src)
 
 list(APPEND ${PROJECT_NAME}_SOURCES
-    )
+    test.cpp)
 
 add_executable(${PROJECT_NAME}_tests ${${PROJECT_NAME}_SOURCES})
 
