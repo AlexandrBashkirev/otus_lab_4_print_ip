@@ -12,7 +12,7 @@ addons:
     - graphviz
     update: true
 script:
-- CXXFLAGS="-stdlib=libc++" cmake .
+- cmake .
 - cmake --build .
 - cmake --build . --target test
 - cmake --build . --target package
