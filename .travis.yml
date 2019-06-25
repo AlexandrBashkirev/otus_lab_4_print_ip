@@ -8,12 +8,12 @@ addons:
     packages:
     - libc++-7-dev
     - libc++abi-7-dev
-    - doxygen
-    - graphviz
-    - libboost-test-dev
     update: true
+install:
+- pip install --user conan
 script:
-- cmake .
+- conan install -s compiler=clang -s compiler.libcxx=libc++ .
+- CXXFLAGS="-stdlib=libc++" cmake .
 - cmake --build .
 - cmake --build . --target test
 - cmake --build . --target package
