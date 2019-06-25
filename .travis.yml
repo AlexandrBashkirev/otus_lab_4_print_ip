@@ -10,10 +10,9 @@ addons:
     - libc++abi-7-dev
     update: true
 install:
-- pip install --user conan
+- pip install libboost-test-dev -y
 script:
-- conan install -s compiler=clang -s compiler.libcxx=libc++ .
-- CXXFLAGS="-stdlib=libc++" cmake .
+- cmake .
 - cmake --build .
 - cmake --build . --target test
 - cmake --build . --target package
