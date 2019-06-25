@@ -11,11 +11,7 @@ addons:
     - doxygen
     - graphviz
     update: true
-install:
-- pip install --user conan
-- conan user
 script:
-- conan install -s compiler=clang -s compiler.libcxx=libc++ .
 - CXXFLAGS="-stdlib=libc++" cmake .
 - cmake --build .
 - cmake --build . --target test
