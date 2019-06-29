@@ -55,21 +55,16 @@ namespace flaber {
 		};
 	}
 
-	/*template <typename CharT>
-	void print_ip(std::basic_ostream<CharT>& os, const std::basic_string<CharT>& ip) {
-		for (auto it = ip.begin(); it != ip.end(); ++it) {
-			os << *it;
-		}
-	}*/
-
 	template <typename CharT>
-	void print_ip(std::basic_ostream<CharT>& os, const std::string& ip) {
+	void print_ip(std::basic_ostream<CharT>& os, const std::basic_string<CharT>& ip) {
 		for (auto it = ip.begin(); it != ip.end(); ++it) {
 			os << *it;
 		}
 	}
 
-	template<template<typename, typename> class ContainerT, typename ValueT, typename AllocT>
+
+	template<template<typename, typename> class ContainerT, typename ValueT, typename AllocT,
+		typename = std::enable_if_t<std::is_integral_v<ValueT>, ValueT>>
 	void print_ip(std::ostream& os, const ContainerT<ValueT, AllocT>& t) {
 		auto it = t.begin();
 		print_ip_part(os, *it);
