@@ -33,6 +33,14 @@ namespace flaber {
 				os << std::char_traits<T>::to_int_type(value);	
 		}
 
+		template<typename T>
+		struct is_char : std::false_type {};
+
+		template<>
+		struct is_char<char> : std::true_type {};
+
+		template<typename T>
+		constexpr bool is_char_v = is_char<T>::value;
 
 		template<int idx, class ...TParams>
 		struct  print_tuple
@@ -64,7 +72,7 @@ namespace flaber {
 
 
 	template<template<typename, typename> class ContainerT, typename ValueT, typename AllocT,
-		typename = std::enable_if_t<std::is_integral_v<ValueT>, ValueT>>
+		typename = std::enable_if_t<!is_char_v<ValueT>, ValueT>>
 	void print_ip(std::ostream& os, const ContainerT<ValueT, AllocT>& t) {
 		auto it = t.begin();
 		print_ip_part(os, *it);
