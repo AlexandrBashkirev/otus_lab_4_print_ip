@@ -1,24 +1,19 @@
-dist: xenial
 language: cpp
-compiler: clang
-addons:
-  apt:
-    sources:
-    - llvm-toolchain-xenial-7
-    packages:
-    - libc++-7-dev
-    - libc++abi-7-dev
-    update: true
-before_script:
-- sudo apt update
-- sudo apt install libspdlog-dev -y
-- sudo apt install libboost-test-dev -y
+before_install:
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  - sudo apt-get update -qq
+install:
+  - sudo apt-get install g++-6 cmake libboost-test-dev libboost-program-options-dev doxygen graphviz -y
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 90
 script:
-- cmake .
-- cmake --build .
-- cmake --build . --target test
-- cmake --build . --target package
-- doxygen Doxyfile
+  - gcc --version
+  - g++ --version
+  - cmake --version
+  - cmake .
+  - cmake --build .
+  - cmake --build . --target test
+  - cmake --build . --target package
+  - doxygen
 deploy:
   - provider: script
     skip_cleanup: true
