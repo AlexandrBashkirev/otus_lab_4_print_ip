@@ -55,8 +55,15 @@ namespace flaber {
 		};
 	}
 
-	template <typename CharT>
+	/*template <typename CharT>
 	void print_ip(std::basic_ostream<CharT>& os, const std::basic_string<CharT>& ip) {
+		for (auto it = ip.begin(); it != ip.end(); ++it) {
+			os << *it;
+		}
+	}*/
+
+	template <typename CharT>
+	void print_ip(std::basic_ostream<CharT>& os, const std::string& ip) {
 		for (auto it = ip.begin(); it != ip.end(); ++it) {
 			os << *it;
 		}
