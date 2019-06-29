@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <memory.h>
 
 namespace flaber {
 
@@ -83,7 +84,7 @@ namespace flaber {
 	{
 		const int s = sizeof(IntT);
 		uint8_t arr[s];
-		memcpy(arr, reinterpret_cast<uint8_t*>(&ip), s);
+		std::memcpy(arr, reinterpret_cast<uint8_t*>(&ip), s);
 
 		print_ip_part(os, arr[s - 1]);
 		for (int i = s - 2; i >= 0; --i) {
